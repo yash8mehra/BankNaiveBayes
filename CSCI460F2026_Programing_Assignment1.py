@@ -114,6 +114,49 @@ for trial in range(1, numTrials+1):
 print("mean accuracies: ", round(np.mean(accuracies), 4),"mean f1s: ", round(np.mean(f1s), 4))
 print("Standard deviation accuracies: ", round(np.std(accuracies), 4), "Standard deviation f1s: ", round(np.std(f1s), 4))
 
+#------------Task 3_______________
+#run program 9 times with 10 iterations each
+
+#10% training and 90% testing for first and move up 10% training and down 10% testing
+
+print("Train%    Test%    AccuracyMean    AccuracyStd    F1Mean    F1Std")
+
+
+for i in range(10, 100, 10):
+	frac = i /100
+	accuracyList = []
+	f1list = []
+
+	for trial in range(1, 11):
+		a, f = doTrial(frac)
+		accuracyList.append(a)
+		f1list.append(f)
+
+	print(i, "       ", 100 - i, "    ", round(np.mean(accuracyList), 4), "         ", round(np.std(accuracyList), 4), "     ", round(np.mean(f1list), 4), "   ", round(np.std(f1list), 4))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
