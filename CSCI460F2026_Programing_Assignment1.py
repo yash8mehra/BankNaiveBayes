@@ -51,6 +51,45 @@ for i in columns:
 	df[i] = df[i].map(d)
 
 
+x = df.drop(columns = ["y"])
+y = df["y"]
+
+print("")
+print("")
+print("")
+print("x is : ")
+print(x)
+
+print("")
+print("")
+print("")
+print(y)
+
+print("")
+print("")
+print("")
+print("Class proportions:\n", y.value_counts(normalize=True))
+print("")
+print("")
+print("")
+
+#now training part
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.7, stratify = y)
+model = GaussianNB()
+model.fit(x_train, y_train)
+y_prediction = model.predict(x_test)
+
+accuracy = accuracy_score(y_prediction, y_test)
+f1 = f1_score(y_prediction, y_test, average = "weighted")
+print("The accuracy of Naive Bayes Model is: ", accuracy)
+print("The F1 score of Naive bayes Model is: ", f1)
+
+
+
+
+
+
+
 
 
 
