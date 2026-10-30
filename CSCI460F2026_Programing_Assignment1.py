@@ -93,8 +93,8 @@ def doTrial(train_s):
 
 	accuracy = accuracy_score(y_prediction, y_test)
 	f1 = f1_score(y_prediction, y_test, average = "weighted")
-	print("The accuracy of Naive Bayes Model is: ", accuracy)
-	print("The F1 score of Naive bayes Model is: ", f1)
+#	print("The accuracy of Naive Bayes Model is: ", accuracy)
+#	print("The F1 score of Naive bayes Model is: ", f1)
 	return accuracy, f1
 
 #------task 2 -----------------
@@ -102,13 +102,14 @@ def doTrial(train_s):
 accuracies = []
 f1s = []
 
+numTrials = 10
+#numTrials = int(input("How many number of trials? (10): "))
 print("Trial    Accuracy    F1-Score")
-numTrials = int(input("How many number of trials? (10): "))
 for trial in range(1, numTrials+1):
 	a,f = doTrial(0.7)
 	accuracies.append(a)
 	f1s.append(f)
-	print(trial, round(a,4), round(f,4))
+	print(trial,"     ", round(a,4), "     ", round(f,4))
 
 print("mean accuracies: ", round(np.mean(accuracies), 4),"mean f1s: ", round(np.mean(f1s), 4))
 print("Standard deviation accuracies: ", round(np.std(accuracies), 4), "Standard deviation f1s: ", round(np.std(f1s), 4))
