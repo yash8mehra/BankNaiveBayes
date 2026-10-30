@@ -28,7 +28,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score, f1_score
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
-import numpy
+import numpy as np
 
 
 
@@ -85,8 +85,8 @@ print("")
 #print("The F1 score of Naive bayes Model is: ", f1)
 
 
-def doTrial(train_size):
-	x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = train_frac, stratify = y)
+def doTrial(train_s):
+	x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = train_s, stratify = y)
 	model = GaussianNB()
 	model.fit(x_train, y_train)
 	y_prediction = model.predict(x_test)
@@ -103,7 +103,7 @@ accuracies = []
 f1s = []
 
 print("Trial    Accuracy    F1-Score")
-numTrials = int(input("How many number of trials? (10)"))
+numTrials = int(input("How many number of trials? (10): "))
 for trial in range(1, numTrials+1):
 	a,f = doTrial(0.7)
 	accuracies.append(a)
